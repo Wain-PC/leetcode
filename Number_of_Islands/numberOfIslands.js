@@ -25,7 +25,6 @@ var numIslands = function (grid) {
   for (let x = 0; x < length; x++) {
     for (let y = 0; y < grid.length; y++) {
       if (+grid[y][x]) {
-        console.log('Island found');
         islands++;
         DFS({x, y});
       }
