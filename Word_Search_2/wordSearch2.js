@@ -1,12 +1,14 @@
+/* eslint-disable no-param-reassign */
+
 /**
- * @param {character[][]} board
+ * @param {string[][]} board
  * @param {string[]} words
  * @return {string[]}
  */
-var findWords = function (board, words) {
+const findWords = (board, words) => {
   const output = {};
   const length = board[0] ? board[0].length : 0;
-  const BFS = (x, y, obj, word = '') => {
+  const BFS = (x, y, obj, word = "") => {
     if (x < 0 || x >= length || y < 0 || y >= board.length) {
       return;
     }
@@ -17,7 +19,7 @@ var findWords = function (board, words) {
     if (obj[letter].ends) {
       output[word + letter] = true;
     }
-    board[y][x] = '';
+    board[y][x] = "";
     BFS(x - 1, y, obj[letter], word + letter); // left
     BFS(x + 1, y, obj[letter], word + letter); // right
     BFS(x, y - 1, obj[letter], word + letter); // up
@@ -26,9 +28,9 @@ var findWords = function (board, words) {
   };
   // Step 1. Create trie from words.
   const root = {};
-  words.forEach(word => {
+  words.forEach((word) => {
     let obj = root;
-    word.split('').forEach((letter, i, arr) => {
+    word.split("").forEach((letter, i, arr) => {
       if (!obj[letter]) {
         obj[letter] = {};
       }

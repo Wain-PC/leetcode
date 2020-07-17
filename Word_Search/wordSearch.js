@@ -1,9 +1,11 @@
+/* eslint-disable no-param-reassign */
+
 /**
  * @param {string[][]} board
  * @param {string} word
  * @return {boolean}
  */
-var exist = function (board, word) {
+const exist = (board, word) => {
   const length = board[0] ? board[0].length : 0;
   const DFS = (x, y, w) => {
     if (!w.length) {
@@ -17,14 +19,14 @@ var exist = function (board, word) {
     if (board[y][x] !== char) {
       return false;
     }
-    board[y][x] = '';
+    board[y][x] = "";
 
     const wordLeft = w.slice(1);
     if (DFS(x, y + 1, wordLeft)) {
       return true;
     }
     if (DFS(x, y - 1, wordLeft)) {
-      return true
+      return true;
     }
     if (DFS(x - 1, y, wordLeft)) {
       return true;
